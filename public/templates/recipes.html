@@ -12,7 +12,7 @@
     <div class="flush-right">
       <!-- TODO Add a directive to this button in order to handle
         when the user clicks to add a new recipe. -->
-      <button>+ Add Recipe</button>
+      <button ng-click="vm.addNew()">+ Add Recipe</button>
     </div>
   </div>
 </div>
@@ -20,7 +20,7 @@
 
 <!-- TODO Add a directive to this div element so that it only displays
   when there are no recipes to display. -->
-<div class="grid-100 row">
+<div class="grid-100 row" ng-hide="filteredItems.length" ng-hide="vm.recipes.length">
   <div class="grid-70">
     <p>No recipes found!</p>
   </div>
@@ -29,11 +29,11 @@
 <!-- TODO Add a directive to this div element so that it repeats
   for each recipe to display. Also, add a directive to this div element
   so that it only displays when there are recipes to display. -->
-<div class="grid-100 row addHover" ng-repeat="recipe in vm.recipes | filter: selected.name">
+<div class="grid-100 row addHover" ng-repeat="recipe in (filteredItems = (vm.recipes | filter: selected.name))" ng-show="filteredItems.length">
   <!-- TODO Replace this anchor element's href attribute with a
     directive so that you can route the user to the Recipe Detail
     screen when they click on a row. -->
-  <a ng-href="/api/recipes/{{recipe._id}}">
+  <a ng-href="#/edit/{{recipe._id}}">
     <div class="grid-70">
       <p>
         <!-- TODO Add binding expressions here in order to
@@ -49,7 +49,7 @@
           <!-- TODO Replace this anchor element's href attribute with a
             directive so that you can route the user to the Recipe Detail
             screen when they click on the 'Edit' link. -->
-          <a ng-href="/add"> <img src="images/edit.svg" height="12px"> Edit </a>
+          <a ng-href="#/edit/{{recipe._id}}"> <img src="images/edit.svg" height="12px"> Edit </a>
           <!-- TODO Add a directive to this anchor element so that you can
             delete the recipe when the user clicks on the 'Delete' link. -->
           <a class="no-action-link"> <img src="images/delete.svg" height="12px"> Delete </a>

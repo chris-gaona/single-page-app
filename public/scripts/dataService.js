@@ -32,14 +32,8 @@
     };
 
     // /api/recipes/{id} - GET - Gets the recipe for the specified ID.
-    apiRoutes.getOne = function () {
-      return $http.get('/api/recipes/{id}').then(function successCallback (response) {
-        console.log(response);
-        // TODO: add message
-      }, function errorCallback (response, status) {
-        console.log('Error ' + response + status);
-        // TODO: add error message for UI
-      });
+    apiRoutes.getOne = function (id) {
+      return $http.get('/api/recipes/' + id);
     };
 
     // /api/recipes/{id} - PUT - Updates the recipe for the specified ID.
