@@ -4,7 +4,8 @@
   // Add service methods that call the following API methods:
   function apiRoutes ($http) {
     var apiRoutes = {
-      recipes: []
+      recipes: [],
+      categories: []
     };
 
     // /api/recipes - GET - Gets all of the recipes.
@@ -76,8 +77,9 @@
     // /api/categories - GET - Gets all of the categories.
     apiRoutes.allCategories = function () {
       return $http.get('/api/categories').then(function successCallback (response) {
-        console.log(response);
-        // TODO: add message
+        // console.log(response.data);
+        // return response.data;
+        angular.copy(response, apiRoutes.categories);
       }, function errorCallback (response, status) {
         console.log('Error ' + response + status);
         // TODO: add error message for UI

@@ -6,6 +6,7 @@
       selects a new category so that you can refresh the recipes list. -->
     <select>
       <option value="">All Categories</option>
+      <option ng-repeat="category in vm.categories" value="">{{category.name}}</option>
     </select>
   </div>
   <div class="grid-70">
@@ -48,7 +49,7 @@
           <!-- TODO Replace this anchor element's href attribute with a
             directive so that you can route the user to the Recipe Detail
             screen when they click on the 'Edit' link. -->
-          <a href="#"> <img src="images/edit.svg" height="12px"> Edit </a>
+          <a ng-href="/add"> <img src="images/edit.svg" height="12px"> Edit </a>
           <!-- TODO Add a directive to this anchor element so that you can
             delete the recipe when the user clicks on the 'Delete' link. -->
           <a class="no-action-link"> <img src="images/delete.svg" height="12px"> Delete </a>

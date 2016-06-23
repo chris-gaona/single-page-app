@@ -22,7 +22,12 @@
       .when('/', {
         controller: 'RecipesController',
         controllerAs: 'vm',
-        templateUrl: 'templates/recipes.html'
+        templateUrl: 'templates/recipes.html',
+        resolve: {
+          categories: ['DataService', function(DataService){
+            return DataService.allCategories();
+          }]
+        }
       })
       .when('/edit/:id', {
         controller: 'RecipeDetailController',
