@@ -11,8 +11,9 @@
     // /api/recipes - GET - Gets all of the recipes.
     apiRoutes.getAll = function () {
       return $http.get('/api/recipes').then(function successCallback (response) {
-        console.log(response);
+        // console.log(response);
         // TODO: add message
+        angular.copy(response, apiRoutes.recipes);
       }, function errorCallback (response, status) {
         console.log('Error ' + response + status);
         // TODO: add error message for UI

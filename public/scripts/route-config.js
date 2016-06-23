@@ -24,6 +24,9 @@
         controllerAs: 'vm',
         templateUrl: 'templates/recipes.html',
         resolve: {
+          recipes: ['DataService', function(DataService){
+            return DataService.getAll();
+          }],
           categories: ['DataService', function(DataService){
             return DataService.allCategories();
           }]
