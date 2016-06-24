@@ -84,8 +84,8 @@
     // /api/fooditems - GET - Gets all of the food items.
     apiRoutes.foodItems = function () {
       return $http.get('/api/fooditems').then(function successCallback (response) {
-        console.log(response);
         // TODO: add message
+        return response.data;
       }, function errorCallback (response, status) {
         console.log('Error ' + response + status);
         // TODO: add error message for UI

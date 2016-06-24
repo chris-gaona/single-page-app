@@ -35,7 +35,15 @@
       .when('/edit/:id', {
         controller: 'RecipeDetailController',
         controllerAs: 'vm',
-        templateUrl: 'templates/recipe-detail.html'
+        templateUrl: 'templates/recipe-detail.html',
+        resolve: {
+          categories: ['DataService', function(DataService){
+            return DataService.allCategories();
+          }],
+          foodItems: ['DataService', function(DataService){
+            return DataService.foodItems();
+          }]
+        }
       })
       .when('/add', {
         controller: 'RecipeDetailController',

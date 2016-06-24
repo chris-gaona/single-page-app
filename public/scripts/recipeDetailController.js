@@ -1,13 +1,28 @@
 (function () {
   'use strict';
 
-  function recipesController (DataService, $routeParams, $location) {
+  function recipesController (DataService, $routeParams, $location, foodItems) {
     var vm = this;
+
+    vm.categories = DataService.categories.data;
+
+    vm.foods = foodItems;
 
     if ($routeParams.id !== undefined) {
       DataService.getOne($routeParams.id).then(function (response) {
         console.log(response.data);
         vm.recipe = response.data;
+        vm.name = vm.recipe.name;
+        vm.description = vm.recipe.description;
+        vm.category = {"name":vm.recipe.category};
+        vm.prepTime = vm.recipe.prepTime;
+        vm.cookTime = vm.recipe.cookTime;
+
+        vm.ingredients = vm.recipe.ingredients;
+        vm.steps = vm.recipe.steps;
+
+        // vm.foodItem = {"name":vm.recipe.ingredients[0].foodItem};
+
         vm.editing = true;
         console.log('EDITING!');
       }, function (response) {
@@ -46,5 +61,5 @@
   }
 
   angular.module('app')
-  .controller('RecipeDetailController', ['DataService', '$routeParams', '$location', recipesController]);
+  .controller('RecipeDetailController', ['DataService', '$routeParams', '$location', 'foodItems', recipesController]);
 })();
