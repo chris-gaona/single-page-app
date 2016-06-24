@@ -32,7 +32,30 @@
       vm.editing = false;
       console.log('NOT EDITING!');
 
+      vm.ingredients = [{
+        foodItem: '',
+        condition: '',
+        amount: ''
+      }];
+
+      vm.steps = [{
+        description: ''
+      }];
     }
+
+    vm.addNewRec = function () {
+      vm.ingredients.push({
+        foodItem: '',
+        condition: '',
+        amount: ''
+      });
+    };
+
+    vm.addNewStep = function () {
+      vm.steps.push({
+        description: ''
+      });
+    };
 
     vm.saveRecipe = function () {
       var newRecipe = {};
