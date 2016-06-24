@@ -31,7 +31,25 @@
     } else {
       vm.editing = false;
       console.log('NOT EDITING!');
+
     }
+
+    vm.saveRecipe = function () {
+      var newRecipe = {};
+      newRecipe.name = vm.name;
+      newRecipe.description = vm.description;
+      newRecipe.category = vm.category.name;
+      newRecipe.prepTime = vm.prepTime;
+      newRecipe.cookTime = vm.cookTime;
+      newRecipe.ingredients = [];
+      var ingredientItem = {
+        foodItem: vm.selected.name,
+        condition: vm.condition,
+        amount: vm.amount
+      }
+      newRecipe.ingredients.push(ingredientItem);
+      console.log(newRecipe);
+    };
 
     vm.cancel = function () {
       $location.path('/');

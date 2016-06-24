@@ -10,7 +10,7 @@
     <div class="flush-right">
       <!-- TODO Add directives to both the "Save Recipe" and "Cancel"
         buttons in order to handle user clicks. -->
-      <button>Save Recipe</button>
+      <button ng-click="vm.saveRecipe()">Save Recipe</button>
       <button class="secondary" ng-click="vm.cancel()">Cancel</button>
     </div>
   </div>
@@ -140,7 +140,7 @@
 
   <!-- TODO Add a directive to this div element so that it repeats
     for each recipe ingredient to display. -->
-  <div class="ingredient-row" ng-repeat="ingredient in vm.ingredients">
+  <div class="ingredient-row" ng-repeat="ingredient in vm.ingredients" ng-if="vm.ingredients.length">
     <div class="prefix-20 grid-30">
       <p>
         <!-- TODO Add directives to this select element to bind its value
@@ -163,6 +163,42 @@
         <!-- TODO Add a directive to this input element to bind its value
           to the recipe ingredient model's `amount` property. -->
         <input type="text" ng-model="ingredient.amount">
+      </p>
+    </div>
+    <div class="grid-5 pad-top">
+      <p class="flush-right">
+        <!-- TODO Add a directive to this anchor element so that you can
+          delete the recipe ingredient when the user clicks on the 'Delete' link. -->
+        <a class="no-action-link"> <img src="images/delete.svg" height="12px"> </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- TODO Add a directive to this div element so that it repeats
+    for each recipe ingredient to display. -->
+  <div class="ingredient-row" ng-if="!vm.ingredients.length">
+    <div class="prefix-20 grid-30">
+      <p>
+        <!-- TODO Add directives to this select element to bind its value
+          to the recipe ingredient model's `foodItem` property and to
+          populate the list with the food items from the database. -->
+        <select ng-model="vm.selected" ng-options="food.name for food in vm.foods track by food.name">
+          <option value="">Select Item</option>
+        </select>
+      </p>
+    </div>
+    <div class="grid-30">
+      <p>
+        <!-- TODO Add a directive to this input element to bind its value
+          to the recipe ingredient model's `condition` property. -->
+        <input type="text" ng-model="vm.condition">
+      </p>
+    </div>
+    <div class="grid-15">
+      <p>
+        <!-- TODO Add a directive to this input element to bind its value
+          to the recipe ingredient model's `amount` property. -->
+        <input type="text" ng-model="vm.amount">
       </p>
     </div>
     <div class="grid-5 pad-top">
@@ -199,12 +235,31 @@
 
   <!-- TODO Add a directive to this div element so that it repeats
     for each recipe step to display. -->
-  <div class="step-row" ng-repeat="step in vm.steps">
+  <div class="step-row" ng-repeat="step in vm.steps" ng-if="vm.steps.length">
     <div class="prefix-20 grid-75">
       <p>
         <!-- TODO Add a directive to this input element to bind its value
           to the recipe step model's `description` property. -->
         <input type="text" ng-model="step.description">
+      </p>
+    </div>
+    <div class="grid-5 pad-top">
+      <p class="flush-right">
+        <!-- TODO Add a directive to this anchor element so that you can
+          delete the recipe step when the user clicks on the 'Delete' link. -->
+        <a class="no-action-link"> <img src="images/delete.svg" height="12px"> </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- TODO Add a directive to this div element so that it repeats
+    for each recipe step to display. -->
+  <div class="step-row" ng-if="!vm.steps.length">
+    <div class="prefix-20 grid-75">
+      <p>
+        <!-- TODO Add a directive to this input element to bind its value
+          to the recipe step model's `description` property. -->
+        <input type="text" ng-model="vm.description">
       </p>
     </div>
     <div class="grid-5 pad-top">
