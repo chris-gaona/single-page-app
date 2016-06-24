@@ -21,8 +21,6 @@
         vm.ingredients = vm.recipe.ingredients;
         vm.steps = vm.recipe.steps;
 
-        // vm.foodItem = {"name":vm.recipe.ingredients[0].foodItem};
-
         vm.editing = true;
         console.log('EDITING!');
       }, function (response) {

@@ -59,13 +59,13 @@
     };
 
     // /api/recipes/{id} - DELETE - Deletes the recipe for the specified ID.
-    apiRoutes.remove = function () {
-      return $http.delete('/api/recipes/{id}').then(function successCallback (response) {
+    apiRoutes.remove = function (id) {
+      return $http.delete('/api/recipes/' + id).then(function successCallback (response) {
         console.log(response);
-        // TODO: add message
+        return 'Recipe Successfully Deleted!';
       }, function errorCallback (response, status) {
         console.log('Error ' + response + status);
-        // TODO: add error message for UI
+        return response;
       });
     };
 

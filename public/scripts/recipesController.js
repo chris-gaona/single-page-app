@@ -10,7 +10,15 @@
     // As a user, I should be able to click on a recipe row or on the row's "Edit" link to view the details for that recipe using the "Recipe Detail" screen.
     vm.recipes = DataService.recipes.data;
 
+    console.log(vm.recipes);
+
     // TODO: As a user, I should be able to click on a recipe row's "Delete" link to delete that recipe.
+    vm.deleteRecipe = function (recipe) {
+      DataService.remove(recipe._id);
+      console.log(DataService.remove(recipe._id));
+
+      vm.recipes.splice(vm.recipes.indexOf(recipe), 1);
+    };
 
     // As a user, I should be able to click the "Add Recipe" button to add a new recipe using the "Recipe Detail" screen.
     vm.addNew = function () {
