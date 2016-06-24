@@ -14,7 +14,7 @@
         vm.recipe = response.data;
         vm.name = vm.recipe.name;
         vm.description = vm.recipe.description;
-        vm.category = {"name":vm.recipe.category};
+        vm.category = vm.recipe.category;
         vm.prepTime = vm.recipe.prepTime;
         vm.cookTime = vm.recipe.cookTime;
 
@@ -63,12 +63,13 @@
       newRecipe.prepTime = vm.prepTime;
       newRecipe.cookTime = vm.cookTime;
       newRecipe.ingredients = [];
-      var ingredientItem = {
-        foodItem: vm.selected.name,
-        condition: vm.condition,
-        amount: vm.amount
-      }
-      newRecipe.ingredients.push(ingredientItem);
+      console.log(vm.ingredients);
+      // var ingredientItem = {
+      //   foodItem: selected.name,
+      //   condition: condition,
+      //   amount: amount
+      // }
+      // newRecipe.ingredients.push(ingredientItem);
       console.log(newRecipe);
     };
 

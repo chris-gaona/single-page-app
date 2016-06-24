@@ -76,7 +76,7 @@
       <!-- TODO Add directives to this select element to bind its value
         to the recipe model's `category` property and to populate the list
         with the categories from the database. -->
-      <select ng-model="vm.category" ng-options="category as category.name for category in vm.categories track by category.name">
+      <select ng-model="vm.category" ng-options="category.name as category.name for category in vm.categories">
         <option value="">All Categories</option>
       </select>
     </p>
@@ -146,7 +146,7 @@
         <!-- TODO Add directives to this select element to bind its value
           to the recipe ingredient model's `foodItem` property and to
           populate the list with the food items from the database. -->
-        <select ng-init="selected = {name: ingredient.foodItem}" ng-model="selected" ng-options="food.name for food in vm.foods track by food.name">
+        <select ng-model="ingredient.foodItem" ng-options="food.name as food.name for food in vm.foods">
           <option value="">Select Item</option>
         </select>
       </p>
