@@ -48,13 +48,13 @@
     };
 
     // /api/recipes - POST - Adds a recipe.
-    apiRoutes.add = function () {
-      return $http.post('/api/recipes').then(function successCallback (response) {
+    apiRoutes.add = function (recipe) {
+      return $http.post('/api/recipes', recipe).then(function successCallback (response) {
         console.log(response);
-        // TODO: add message
+        return response;
       }, function errorCallback (response, status) {
         console.log('Error ' + response + status);
-        // TODO: add error message for UI
+        return response;
       });
     };
 

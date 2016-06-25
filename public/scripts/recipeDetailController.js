@@ -59,18 +59,14 @@
       var newRecipe = {};
       newRecipe.name = vm.name;
       newRecipe.description = vm.description;
-      newRecipe.category = vm.category.name;
+      newRecipe.category = vm.category;
       newRecipe.prepTime = vm.prepTime;
       newRecipe.cookTime = vm.cookTime;
-      newRecipe.ingredients = [];
-      console.log(vm.ingredients);
-      // var ingredientItem = {
-      //   foodItem: selected.name,
-      //   condition: condition,
-      //   amount: amount
-      // }
-      // newRecipe.ingredients.push(ingredientItem);
+      newRecipe.ingredients = vm.ingredients;
+      newRecipe.steps = vm.steps;
       console.log(newRecipe);
+
+      DataService.add(newRecipe);
     };
 
     vm.cancel = function () {
