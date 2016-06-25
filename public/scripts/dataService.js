@@ -11,8 +11,6 @@
     // /api/recipes - GET - Gets all of the recipes.
     apiRoutes.getAll = function () {
       return $http.get('/api/recipes').then(function successCallback (response) {
-        // console.log(response);
-        // TODO: add message
         angular.copy(response, apiRoutes.recipes);
       }, function errorCallback (response, status) {
         console.log('Error ' + response + status);
@@ -38,24 +36,12 @@
 
     // /api/recipes/{id} - PUT - Updates the recipe for the specified ID.
     apiRoutes.update = function (id, recipe) {
-      return $http.put('/api/recipes/' + id, recipe).then(function successCallback (response) {
-        console.log(response);
-        return response;
-      }, function errorCallback (response, status) {
-        console.log('Error ' + response + status);
-        return response;
-      });
+      return $http.put('/api/recipes/' + id, recipe);
     };
 
     // /api/recipes - POST - Adds a recipe.
     apiRoutes.add = function (recipe) {
-      return $http.post('/api/recipes', recipe).then(function successCallback (response) {
-        console.log(response);
-        return response;
-      }, function errorCallback (response, status) {
-        console.log('Error ' + response + status);
-        return response;
-      });
+      return $http.post('/api/recipes', recipe);
     };
 
     // /api/recipes/{id} - DELETE - Deletes the recipe for the specified ID.

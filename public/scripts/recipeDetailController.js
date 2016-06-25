@@ -66,12 +66,36 @@
       console.log(newRecipe);
 
       if (recipe !== undefined) {
-        DataService.update(recipe._id, newRecipe);
+        DataService.update(recipe._id, newRecipe).then(function (response) {
+          console.log(response.data);
+          $location.path('/');
+        }, function (response) {
+          console.log(response.data.errors);
+          vm.catErrors = response.data.errors.category;
+          vm.ingErrors = response.data.errors.ingredients;
+          vm.nameErrors = response.data.errors.name;
+          vm.stepErrors = response.data.errors.steps;
+        });
       } else {
-        DataService.add(newRecipe);
+        DataService.add(newRecipe).then(function (response) {
+          console.log(response.data);
+          $location.path('/');
+        }, function (response) {
+          console.log(response.data.errors);
+          vm.catErrors = response.data.errors.category;
+          vm.ingErrors = response.data.errors.ingredients;
+          vm.nameErrors = response.data.errors.name;
+          vm.stepErrors = response.data.errors.steps;
+        });
       }
+    };
 
-      $location.path('/');
+    vm.checkError = function () {
+      if (vm.catErrors || vm.ingErrors || vm.nameErrors || vm.stepErrors) {
+        return true;
+      } else {
+        return false;
+      }
     };
 
     vm.cancel = function () {
