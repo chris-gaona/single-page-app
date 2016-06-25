@@ -55,8 +55,6 @@
     };
 
     vm.saveRecipe = function (recipe) {
-      console.log(recipe);
-
       var newRecipe = {};
       newRecipe.name = vm.name;
       newRecipe.description = vm.description;
@@ -80,6 +78,13 @@
       $location.path('/');
     };
 
+    vm.deleteIngr = function (ingredient) {
+      vm.ingredients.splice(vm.ingredients.indexOf(ingredient), 1);
+    };
+
+    vm.deleteStep = function (step) {
+      vm.steps.splice(vm.steps.indexOf(step), 1);
+    };
 
     /*
     As a user, when adding or updating a recipe, I can provide the following values:
