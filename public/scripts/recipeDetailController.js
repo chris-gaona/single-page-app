@@ -109,27 +109,6 @@
     vm.deleteStep = function (step) {
       vm.steps.splice(vm.steps.indexOf(step), 1);
     };
-
-    /*
-    As a user, when adding or updating a recipe, I can provide the following values:
-    Name (text box)
-    Description (multi-line text box)
-    Category (select list)
-    Prep Time (text box)
-    Cook Time (text box)
-
-    As a user, I should be able to add one or more ingredients and steps to a recipe.
-
-    As a user, when adding an ingredient to a recipe, I can provide the following values:
-    Item (select list)
-    Condition (text box)
-    Quantity (text box)
-
-    As a user, when adding a step to a recipe, I can provide the following values:
-    Description (text box)
-
-    As a user, I should be able to see any errors that the REST API returns when I save a recipe.
-    */
   }
 
   angular.module('app')

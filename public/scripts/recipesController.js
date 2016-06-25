@@ -14,8 +14,12 @@
 
     // TODO: As a user, I should be able to click on a recipe row's "Delete" link to delete that recipe.
     vm.deleteRecipe = function (recipe) {
-      DataService.remove(recipe._id);
-      console.log(DataService.remove(recipe._id));
+      DataService.remove(recipe._id).then(function (response) {
+        console.log(response);
+        console.log('Recipe Successfully Deleted!');
+      }, function (response) {
+        console.log('Error ' + response);
+      });
 
       vm.recipes.splice(vm.recipes.indexOf(recipe), 1);
     };

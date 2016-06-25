@@ -46,13 +46,7 @@
 
     // /api/recipes/{id} - DELETE - Deletes the recipe for the specified ID.
     apiRoutes.remove = function (id) {
-      return $http.delete('/api/recipes/' + id).then(function successCallback (response) {
-        console.log(response);
-        return 'Recipe Successfully Deleted!';
-      }, function errorCallback (response, status) {
-        console.log('Error ' + response + status);
-        return response;
-      });
+      return $http.delete('/api/recipes/' + id);
     };
 
     // /api/categories - GET - Gets all of the categories.
