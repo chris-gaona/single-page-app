@@ -37,13 +37,13 @@
     };
 
     // /api/recipes/{id} - PUT - Updates the recipe for the specified ID.
-    apiRoutes.update = function () {
-      return $http.put('/api/recipes/{id}').then(function successCallback (response) {
+    apiRoutes.update = function (id, recipe) {
+      return $http.put('/api/recipes/' + id, recipe).then(function successCallback (response) {
         console.log(response);
-        // TODO: add message
+        return response;
       }, function errorCallback (response, status) {
         console.log('Error ' + response + status);
-        // TODO: add error message for UI
+        return response;
       });
     };
 

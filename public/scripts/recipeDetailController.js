@@ -10,7 +10,6 @@
 
     if ($routeParams.id !== undefined) {
       DataService.getOne($routeParams.id).then(function (response) {
-        console.log(response.data);
         vm.recipe = response.data;
         vm.name = vm.recipe.name;
         vm.description = vm.recipe.description;
@@ -55,7 +54,9 @@
       });
     };
 
-    vm.saveRecipe = function () {
+    vm.saveRecipe = function (recipe) {
+      console.log(recipe);
+
       var newRecipe = {};
       newRecipe.name = vm.name;
       newRecipe.description = vm.description;
@@ -66,7 +67,13 @@
       newRecipe.steps = vm.steps;
       console.log(newRecipe);
 
-      DataService.add(newRecipe);
+      if (recipe !== undefined) {
+        DataService.update(recipe._id, newRecipe);
+      } else {
+        DataService.add(newRecipe);
+      }
+
+      $location.path('/');
     };
 
     vm.cancel = function () {
