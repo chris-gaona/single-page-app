@@ -1,4 +1,6 @@
-
+* {
+  box-sizing: border-box;
+}
 body {
   max-width: 800px;
   background: #f6ebe5;
@@ -111,7 +113,7 @@ button {
 /* MODAL STYLES */
 .ng-modal-overlay {
   /* A dark translucent div that covers the whole screen */
-  position:absolute;
+  position:fixed;
   z-index:9999;
   top:0;
   left:0;
@@ -123,7 +125,7 @@ button {
 .ng-modal-dialog {
   /* A centered div above the overlay with a box shadow. */
   z-index:10000;
-  position: absolute;
+  position: fixed;
   width: 50%; /* Default */
 
   /* Center the dialog */
@@ -135,6 +137,7 @@ button {
   background-color: #f6ebe5;
   border-radius: 5px;
   box-shadow: 4px 4px 80px #000;
+  padding-bottom: 15px;
 }
 .ng-modal-dialog-content {
   padding:15px;
@@ -187,8 +190,6 @@ background-color: #F0A49B;
   opacity:0;
   top: 0;
 }
-
-.fade { }
 
 .fade.ng-move,
 .fade.ng-enter,

@@ -190,7 +190,7 @@
       <p class="flush-right">
         <!-- TODO Add a directive to this anchor element so that you can
           delete the recipe ingredient when the user clicks on the 'Delete' link. -->
-        <a class="no-action-link" ng-click="vm.deleteIngr(ingredient)"> <img src="images/delete.svg" height="12px"> </a>
+        <a class="no-action-link" ng-click="vm.toggleModal(ingredient)"> <img src="images/delete.svg" height="12px"> </a>
       </p>
     </div>
   </div>
@@ -232,7 +232,7 @@
       <p class="flush-right">
         <!-- TODO Add a directive to this anchor element so that you can
           delete the recipe step when the user clicks on the 'Delete' link. -->
-        <a class="no-action-link" ng-click="vm.deleteStep(step)"> <img src="images/delete.svg" height="12px"> </a>
+        <a class="no-action-link" ng-click="vm.toggleModal(step)"> <img src="images/delete.svg" height="12px"> </a>
       </p>
     </div>
   </div>
@@ -247,3 +247,14 @@
 
 </div>
 <div class="clear"></div>
+
+<modal-dialog show='vm.modalShown' width='300px' height='auto'>
+  <p>Are you sure you want to delete:</p>
+  <p ng-hide="vm.checkItem(vm.chosenItem)" class="recipe-text">{{vm.chosenItem.foodItem}}</p>
+  <p ng-show="vm.checkItem(vm.chosenItem)" class="recipe-text">{{vm.chosenItem.description}}</p>
+  <div class="button-container">
+    <button ng-show="vm.checkItem(vm.chosenItem)" ng-click="vm.deleteStep(vm.chosenItem)">Do it already!</button>
+    <button ng-hide="vm.checkItem(vm.chosenItem)" ng-click="vm.deleteIngr(vm.chosenItem)">Do it already!</button>
+    <button class="red-button" ng-click="vm.modalShown = false">No, wait, stop!</button>
+  </div>
+</modal-dialog>

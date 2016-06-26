@@ -104,10 +104,27 @@
 
     vm.deleteIngr = function (ingredient) {
       vm.ingredients.splice(vm.ingredients.indexOf(ingredient), 1);
+      vm.modalShown = false;
     };
 
     vm.deleteStep = function (step) {
       vm.steps.splice(vm.steps.indexOf(step), 1);
+      vm.modalShown = false;
+    };
+
+    vm.modalShown = false;
+    vm.toggleModal = function(item) {
+      vm.chosenItem = item;
+      vm.modalShown = !vm.modalShown;
+    };
+
+    vm.checkItem = function (item) {
+      if (item.foodItem === undefined) {
+        console.log('yup');
+        return true;
+      } else {
+        return false;
+      }
     };
   }
 
