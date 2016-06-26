@@ -52,9 +52,18 @@
           <a ng-href="#/edit/{{recipe._id}}"> <img src="images/edit.svg" height="12px"> Edit </a>
           <!-- TODO Add a directive to this anchor element so that you can
             delete the recipe when the user clicks on the 'Delete' link. -->
-          <a class="no-action-link" ng-click="vm.deleteRecipe(recipe)"> <img src="images/delete.svg" height="12px"> Delete </a>
+          <a class="no-action-link" ng-click="vm.toggleModal(recipe)"> <img src="images/delete.svg" height="12px"> Delete </a>
         </p>
       </div>
     </div>
   </div>
 </div>
+
+<modal-dialog show='vm.modalShown' width='300px' height='200px'>
+  <p>Are you sure you want to delete:</p>
+  <p class="recipe-text">{{vm.chosenRecipe.name}}</p>
+  <div class="button-container">
+    <button ng-click="vm.deleteRecipe(vm.chosenRecipe)">Do it already!</button>
+    <button class="red-button" ng-click="vm.modalShown = false">No, wait, stop!</button>
+  </div>
+</modal-dialog>

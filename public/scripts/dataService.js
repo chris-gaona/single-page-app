@@ -52,8 +52,6 @@
     // /api/categories - GET - Gets all of the categories.
     apiRoutes.allCategories = function () {
       return $http.get('/api/categories').then(function successCallback (response) {
-        // console.log(response.data);
-        // return response.data;
         angular.copy(response, apiRoutes.categories);
       }, function errorCallback (response, status) {
         console.log('Error ' + response + status);
@@ -64,7 +62,6 @@
     // /api/fooditems - GET - Gets all of the food items.
     apiRoutes.foodItems = function () {
       return $http.get('/api/fooditems').then(function successCallback (response) {
-        // TODO: add message
         return response.data;
       }, function errorCallback (response, status) {
         console.log('Error ' + response + status);
