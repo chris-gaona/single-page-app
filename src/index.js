@@ -34,6 +34,9 @@ app.get('/vendor/angular.js', function(req, res) {
 app.get('/vendor/angular-route.js', function(req, res) {
   res.sendFile(path.join(__dirname, '../node_modules', 'angular-route', 'angular-route.js'));
 });
+app.get('/vendor/angular-animate.js', function(req, res) {
+  res.sendFile(path.join(__dirname, '../node_modules', 'angular-animate', 'angular-animate.js'));
+});
 
 // recipes
 var recipeRouter = require('./api/routes/recipeRoutes.js')(db.recipes, db.foodItems);
