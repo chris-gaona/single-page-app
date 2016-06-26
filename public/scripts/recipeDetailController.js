@@ -120,7 +120,6 @@
 
     vm.checkItem = function (item) {
       if (item.foodItem === undefined) {
-        console.log('yup');
         return true;
       } else {
         return false;

@@ -18,6 +18,9 @@
     "nedb": "^1.8.0"
   },
   "devDependencies": {
+    "karma": "^1.0.0",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
     "nodemon": "^1.9.1"
   }
 }
