@@ -22,7 +22,6 @@
     "angular-mocks": "^1.5.7",
     "jasmine-core": "^2.4.1",
     "karma": "^1.0.0",
-    "karma-chrome-launcher": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.1",
     "nodemon": "^1.9.1"
