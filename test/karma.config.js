@@ -5,14 +5,15 @@ module.exports = function (config) {
     basePath: '../',
 
     files: [
+      // External libs
       'node_modules/angular/angular.js',
       'node_modules/angular-route/angular-route.js',
       'node_modules/angular-animate/angular-animate.js',
       'node_modules/angular-mocks/angular-mocks.js',
-      'public/scripts/route-config.js',
-      'public/scripts/dataService.js',
-      'public/scripts/recipesController.js',
-      'test/unit/controllersSpec.js'
+      // Source
+      'public/**/*.js',
+      // Tests
+      'test/**/*.js'
     ],
 
     autoWatch: true,

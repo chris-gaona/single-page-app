@@ -17,8 +17,8 @@
         console.log('Recipe Successfully Deleted!');
         vm.modalShown = false;
         vm.response = response;
-      }, function (response) {
-        console.log('Error ' + response);
+      }, function (error) {
+        console.log('Error ' + error);
       });
 
       vm.recipes.splice(vm.recipes.indexOf(recipe), 1);

@@ -58,6 +58,7 @@ describe('recipesController', function () {
     }));
 
     it('should call DataService.remove function', function () {
+      // Methods of DataService can be spied on individually and given mock behavior specific to each test.
       // Mock implementation of DataService.remove()
       spyOn(DataService, 'remove').and.callFake(function () {
         var deferred = q.defer();
@@ -65,6 +66,7 @@ describe('recipesController', function () {
         return deferred.promise;
       });
       // Perform an action
+      // Code in the body of the callback function will be // updated as if it were running in an Angular app.
       scope.$apply(function() {
         recipesController.deleteRecipe(recipe);
       });
