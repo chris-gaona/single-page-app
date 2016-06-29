@@ -1,6 +1,7 @@
 'use strict';
 
 describe('recipesController', function () {
+  // variables
   var recipesController,
       DataService,
       timeout,
