@@ -16,6 +16,7 @@
         console.log(response);
         console.log('Recipe Successfully Deleted!');
         vm.modalShown = false;
+        vm.response = response;
       }, function (response) {
         console.log('Error ' + response);
       });
