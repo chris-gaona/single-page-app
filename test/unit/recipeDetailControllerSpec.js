@@ -211,5 +211,124 @@ describe('recipeDetailController', function () {
     });
   });
 
+  describe('checkError function', function () {
+    beforeEach(inject(function ($controller) {
+      recipesController = $controller('RecipeDetailController');
+    }));
 
+    it('should initially have undefined error variables', function () {
+      expect(recipesController.catErrors).toBe(undefined);
+      expect(recipesController.ingErrors).toBe(undefined);
+      expect(recipesController.nameErrors).toBe(undefined);
+      expect(recipesController.stepErrors).toBe(undefined);
+      expect(recipesController.checkError()).toBe(false);
+    });
+
+    it('should return true if error variables are defined', function () {
+      recipesController.catErrors = 'Hello';
+      recipesController.ingErrors = 'there';
+      recipesController.nameErrors = 'I am';
+      recipesController.stepErrors = 'defined';
+
+      expect(recipesController.catErrors).toEqual('Hello');
+      expect(recipesController.ingErrors).toEqual('there');
+      expect(recipesController.nameErrors).toEqual('I am');
+      expect(recipesController.stepErrors).toEqual('defined');
+      expect(recipesController.checkError()).toBe(true);
+    });
+
+    it('should return true if only one error variables is defined', function () {
+      recipesController.catErrors = 'Hello';
+
+      expect(recipesController.catErrors).toEqual('Hello');
+      expect(recipesController.ingErrors).toBe(undefined);
+      expect(recipesController.nameErrors).toBe(undefined);
+      expect(recipesController.stepErrors).toBe(undefined);
+      expect(recipesController.checkError()).toBe(true);
+    });
+  });
+
+  describe('cancel function', function () {
+    beforeEach(inject(function ($controller, _$location_) {
+      $location = _$location_;
+      recipesController = $controller('RecipeDetailController');
+    }));
+
+    it('should change the location path to /', function () {
+      recipesController.cancel();
+      expect($location.path()).toBe('/');
+    });
+  });
+
+  describe('deleteIngr function ', function () {
+    beforeEach(inject(function ($controller) {
+      recipesController = $controller('RecipeDetailController');
+    }));
+
+    it('should splice out the passed in ingredient parameter', function () {
+      var ingredients = ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'];
+      recipesController.ingredients = ingredients;
+      expect(recipesController.ingredients).toEqual(ingredients);
+      expect(recipesController.ingredients.length).toBe(3);
+
+      recipesController.deleteIngr(ingredients[0]);
+      expect(recipesController.ingredients.length).toBe(2);
+      expect(recipesController.modalShown).toEqual(false);
+    });
+  });
+
+  describe('deleteStep function ', function () {
+    beforeEach(inject(function ($controller) {
+      recipesController = $controller('RecipeDetailController');
+    }));
+
+    it('should splice out the passed in step parameter', function () {
+      var steps = ['Step 1', 'Step 2', 'Step 3'];
+      recipesController.steps = steps;
+      expect(recipesController.steps).toEqual(steps);
+      expect(recipesController.steps.length).toBe(3);
+
+      recipesController.deleteStep(steps[0]);
+      expect(recipesController.steps.length).toBe(2);
+      expect(recipesController.modalShown).toEqual(false);
+    });
+  });
+
+  describe('toggleModal function', function () {
+    beforeEach(inject(function ($controller) {
+      recipesController = $controller('RecipeDetailController');
+    }));
+
+    it('should toggle the modalShown variable', function () {
+      var item = 'Here is the item';
+      expect(recipesController.modalShown).toBe(false);
+
+      recipesController.toggleModal(item);
+      expect(recipesController.chosenItem).toEqual(item);
+      expect(recipesController.modalShown).toEqual(true);
+
+      recipesController.toggleModal();
+      expect(recipesController.modalShown).toEqual(false);
+    });
+  });
+
+  describe('checkItem function', function () {
+    beforeEach(inject(function ($controller) {
+      recipesController = $controller('RecipeDetailController');
+    }));
+
+    it('should return true if item.foodItem does NOT equal undefined', function () {
+      var item = {
+        foodItem: 'Carrot'
+      }
+
+      expect(recipesController.checkItem(item)).toBe(false);
+    });
+
+    it('should return false if item.foodItem equals undefined', function () {
+      var item = {}
+
+      expect(recipesController.checkItem(item)).toBe(true);
+    });
+  });
 });
