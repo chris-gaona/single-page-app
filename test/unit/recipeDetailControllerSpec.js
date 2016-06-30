@@ -138,5 +138,78 @@ describe('recipeDetailController', function () {
     });
   });
 
-  
+  describe('saveRecipe function', function () {
+    beforeEach(inject(function ($rootScope, $controller, $timeout, $q, _DataService_) {
+      DataService = _DataService_;
+      timeout = $timeout;
+      q = $q;
+
+      recipe = undefined;
+
+      scope = $rootScope.$new();
+
+      recipesController = $controller('RecipeDetailController', {
+        DataService: DataService
+      });
+    }));
+
+    it('should call DataService.add()', function () {
+      spyOn(DataService, 'add').and.callFake(function () {
+        var deferred = q.defer();
+        deferred.resolve(recipe);
+        return deferred.promise;
+      });
+
+      scope.$apply(function () {
+        recipesController.saveRecipe(recipe);
+      });
+
+      expect(DataService.add).toHaveBeenCalled();
+      expect(recipesController.recipeObject).toEqual(undefined);
+    });
+  });
+
+  describe('saveRecipe function', function () {
+    beforeEach(inject(function ($rootScope, $controller, $timeout, $q, _DataService_) {
+      DataService = _DataService_;
+      timeout = $timeout;
+      q = $q;
+
+      recipe = {
+        data: {
+          name: "Cabbage Salad Goodness",
+          description: "Simple, light and tasty cabbage salad.",
+          category: "Salad",
+          prepTime: 10,
+          cookTime: 60,
+          ingredients: [],
+          _id: "dBHEBmK8abxVorHi",
+          steps: []
+        }
+      };
+
+      scope = $rootScope.$new();
+
+      recipesController = $controller('RecipeDetailController', {
+        DataService: DataService
+      });
+    }));
+
+    it('should call DataService.update()', function () {
+      spyOn(DataService, 'update').and.callFake(function () {
+        var deferred = q.defer();
+        deferred.resolve(recipe);
+        return deferred.promise;
+      });
+
+      scope.$apply(function () {
+        recipesController.saveRecipe(recipe);
+      });
+
+      expect(DataService.update).toHaveBeenCalled();
+      expect(recipesController.recipeObject).toEqual(recipe);
+    });
+  });
+
+
 });

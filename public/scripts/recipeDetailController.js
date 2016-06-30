@@ -61,6 +61,8 @@
     };
 
     vm.saveRecipe = function (recipe) {
+      vm.recipeObject = recipe;
+
       var newRecipe = {};
       newRecipe.name = vm.name;
       newRecipe.description = vm.description;
@@ -73,8 +75,10 @@
 
       if (recipe !== undefined) {
         DataService.update(recipe._id, newRecipe).then(function (response) {
-          console.log(response.data);
-          $location.path('/');
+          if (response) {
+            console.log(response.data);
+            $location.path('/');
+          }
         }, function (response) {
           console.log(response.data.errors);
           vm.catErrors = response.data.errors.category;
@@ -84,8 +88,12 @@
         });
       } else {
         DataService.add(newRecipe).then(function (response) {
-          console.log(response.data);
-          $location.path('/');
+          if (response) {
+            console.log(response.data);
+            $location.path('/');
+          } else {
+            console.log('There was an error!');
+          }
         }, function (response) {
           console.log(response.data.errors);
           vm.catErrors = response.data.errors.category;
