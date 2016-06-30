@@ -10,37 +10,41 @@
 
     vm.id = $routeParams.id;
 
-    if ($routeParams.id !== undefined) {
-      DataService.getOne($routeParams.id).then(function (response) {
-        vm.recipe = response.data;
-        vm.name = vm.recipe.name;
-        vm.description = vm.recipe.description;
-        vm.category = vm.recipe.category;
-        vm.prepTime = vm.recipe.prepTime;
-        vm.cookTime = vm.recipe.cookTime;
+    vm.editing = false;
 
-        vm.ingredients = vm.recipe.ingredients;
-        vm.steps = vm.recipe.steps;
+    vm.getOneRecipe = function () {
+      if (vm.id !== undefined) {
+        DataService.getOne(vm.id).then(function (response) {
+          vm.response = response;
+          vm.recipe = response.data;
+          vm.name = vm.recipe.name;
+          vm.description = vm.recipe.description;
+          vm.category = vm.recipe.category;
+          vm.prepTime = vm.recipe.prepTime;
+          vm.cookTime = vm.recipe.cookTime;
 
+          vm.ingredients = vm.recipe.ingredients;
+          vm.steps = vm.recipe.steps;
+        }, function (response) {
+          console.log('Error ' + response);
+        });
         vm.editing = true;
         console.log('EDITING!');
-      }, function (response) {
-        console.log('Error ' + response);
-      });
-    } else {
-      vm.editing = false;
-      console.log('NOT EDITING!');
+      } else {
+        vm.editing = false;
+        console.log('NOT EDITING!');
 
-      vm.ingredients = [{
-        foodItem: '',
-        condition: '',
-        amount: ''
-      }];
+        vm.ingredients = [{
+          foodItem: '',
+          condition: '',
+          amount: ''
+        }];
 
-      vm.steps = [{
-        description: ''
-      }];
-    }
+        vm.steps = [{
+          description: ''
+        }];
+      }
+    };
 
     vm.addNewRec = function () {
       vm.ingredients.push({
@@ -57,6 +61,8 @@
     };
 
     vm.saveRecipe = function (recipe) {
+      vm.recipeObject = recipe;
+
       var newRecipe = {};
       newRecipe.name = vm.name;
       newRecipe.description = vm.description;
@@ -69,8 +75,10 @@
 
       if (recipe !== undefined) {
         DataService.update(recipe._id, newRecipe).then(function (response) {
-          console.log(response.data);
-          $location.path('/');
+          if (response) {
+            console.log(response.data);
+            $location.path('/');
+          }
         }, function (response) {
           console.log(response.data.errors);
           vm.catErrors = response.data.errors.category;
@@ -80,8 +88,12 @@
         });
       } else {
         DataService.add(newRecipe).then(function (response) {
-          console.log(response.data);
-          $location.path('/');
+          if (response) {
+            console.log(response.data);
+            $location.path('/');
+          } else {
+            console.log('There was an error!');
+          }
         }, function (response) {
           console.log(response.data.errors);
           vm.catErrors = response.data.errors.category;
@@ -121,6 +133,7 @@
     };
 
     vm.checkItem = function (item) {
+      console.log(item);
       if (item.foodItem === undefined) {
         return true;
       } else {
