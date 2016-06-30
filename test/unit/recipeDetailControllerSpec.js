@@ -111,4 +111,32 @@ describe('recipeDetailController', function () {
       expect(recipesController.steps).toEqual([{description: ''}]);
     });
   });
+
+  describe('addNewRec function', function () {
+    beforeEach(inject(function ($controller) {
+      recipesController = $controller('RecipeDetailController');
+
+      recipesController.ingredients = [];
+    }));
+
+    it('should create a new empty ingredient item', function () {
+      recipesController.addNewRec();
+      expect(recipesController.ingredients).toEqual([{foodItem: '', condition: '', amount: ''}]);
+    });
+  });
+
+  describe('addNewStep function', function () {
+    beforeEach(inject(function ($controller) {
+      recipesController = $controller('RecipeDetailController');
+
+      recipesController.steps = [];
+    }));
+
+    it('should create a new empty step item', function () {
+      recipesController.addNewStep();
+      expect(recipesController.steps).toEqual([{description: ''}]);
+    });
+  });
+
+  
 });
