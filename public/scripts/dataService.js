@@ -5,7 +5,8 @@
   function apiRoutes ($http) {
     var apiRoutes = {
       recipes: [],
-      categories: []
+      categories: [],
+      foodItems: []
     };
 
     // /api/recipes - GET - Gets all of the recipes.
@@ -62,7 +63,7 @@
     // /api/fooditems - GET - Gets all of the food items.
     apiRoutes.foodItems = function () {
       return $http.get('/api/fooditems').then(function successCallback (response) {
-        return response.data;
+        angular.copy(response, apiRoutes.foodItems);
       }, function errorCallback (response, status) {
         console.log('Error ' + response + status);
         // TODO: add error message for UI

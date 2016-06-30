@@ -1,12 +1,14 @@
 (function () {
   'use strict';
 
-  function recipesController (DataService, $routeParams, $location, foodItems) {
+  function recipesController (DataService, $routeParams, $location) {
     var vm = this;
 
     vm.categories = DataService.categories.data;
 
-    vm.foods = foodItems;
+    vm.foods = DataService.foodItems.data;
+
+    vm.id = $routeParams.id;
 
     if ($routeParams.id !== undefined) {
       DataService.getOne($routeParams.id).then(function (response) {
@@ -128,5 +130,5 @@
   }
 
   angular.module('app')
-  .controller('RecipeDetailController', ['DataService', '$routeParams', '$location', 'foodItems', recipesController]);
+  .controller('RecipeDetailController', ['DataService', '$routeParams', '$location', recipesController]);
 })();
