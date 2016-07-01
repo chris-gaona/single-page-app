@@ -133,7 +133,6 @@
     };
 
     vm.checkItem = function (item) {
-      console.log(item);
       if (item.foodItem === undefined) {
         return true;
       } else {

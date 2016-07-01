@@ -89,12 +89,12 @@ describe('recipesController', function () {
     });
   });
 
-  describe('addNew function', function () {
-    beforeEach(inject(function ($controller, _$location_) {
-      $location = _$location_;
-      recipesController = $controller('RecipesController');
-    }));
+  beforeEach(inject(function ($controller, _$location_) {
+    $location = _$location_;
+    recipesController = $controller('RecipesController');
+  }));
 
+  describe('addNew function', function () {
     it('should direct the user to the recipe detail page', function () {
       $location.path('/');
       expect($location.path()).toBe('/');
@@ -104,11 +104,6 @@ describe('recipesController', function () {
   });
 
   describe('toggleModal function', function () {
-    beforeEach(inject(function ($controller, _$location_) {
-      $location = _$location_;
-      recipesController = $controller('RecipesController');
-    }));
-
     it('should be false', function () {
       expect(recipesController.modalShown).toBe(false);
     });

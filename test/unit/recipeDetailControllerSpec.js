@@ -112,45 +112,36 @@ describe('recipeDetailController', function () {
     });
   });
 
+  beforeEach(inject(function ($controller, _$location_,  _DataService_) {
+    DataService = _DataService_;
+    $location = _$location_;
+    recipesController = $controller('RecipeDetailController');
+  }));
+
   describe('addNewRec function', function () {
-    beforeEach(inject(function ($controller) {
-      recipesController = $controller('RecipeDetailController');
-
-      recipesController.ingredients = [];
-    }));
-
     it('should create a new empty ingredient item', function () {
+      recipesController.ingredients = [];
       recipesController.addNewRec();
       expect(recipesController.ingredients).toEqual([{foodItem: '', condition: '', amount: ''}]);
     });
   });
 
   describe('addNewStep function', function () {
-    beforeEach(inject(function ($controller) {
-      recipesController = $controller('RecipeDetailController');
-
-      recipesController.steps = [];
-    }));
-
     it('should create a new empty step item', function () {
+      recipesController.steps = [];
       recipesController.addNewStep();
       expect(recipesController.steps).toEqual([{description: ''}]);
     });
   });
 
   describe('saveRecipe function', function () {
-    beforeEach(inject(function ($rootScope, $controller, $timeout, $q, _DataService_) {
-      DataService = _DataService_;
+    beforeEach(inject(function ($rootScope, $controller, $timeout, $q) {
       timeout = $timeout;
       q = $q;
 
       recipe = undefined;
 
       scope = $rootScope.$new();
-
-      recipesController = $controller('RecipeDetailController', {
-        DataService: DataService
-      });
     }));
 
     it('should call DataService.add()', function () {
@@ -170,8 +161,7 @@ describe('recipeDetailController', function () {
   });
 
   describe('saveRecipe function', function () {
-    beforeEach(inject(function ($rootScope, $controller, $timeout, $q, _DataService_) {
-      DataService = _DataService_;
+    beforeEach(inject(function ($rootScope, $controller, $timeout, $q) {
       timeout = $timeout;
       q = $q;
 
@@ -189,10 +179,6 @@ describe('recipeDetailController', function () {
       };
 
       scope = $rootScope.$new();
-
-      recipesController = $controller('RecipeDetailController', {
-        DataService: DataService
-      });
     }));
 
     it('should call DataService.update()', function () {
@@ -212,10 +198,6 @@ describe('recipeDetailController', function () {
   });
 
   describe('checkError function', function () {
-    beforeEach(inject(function ($controller) {
-      recipesController = $controller('RecipeDetailController');
-    }));
-
     it('should initially have undefined error variables', function () {
       expect(recipesController.catErrors).toBe(undefined);
       expect(recipesController.ingErrors).toBe(undefined);
@@ -249,11 +231,6 @@ describe('recipeDetailController', function () {
   });
 
   describe('cancel function', function () {
-    beforeEach(inject(function ($controller, _$location_) {
-      $location = _$location_;
-      recipesController = $controller('RecipeDetailController');
-    }));
-
     it('should change the location path to /', function () {
       recipesController.cancel();
       expect($location.path()).toBe('/');
@@ -261,9 +238,7 @@ describe('recipeDetailController', function () {
   });
 
   describe('deleteIngr function ', function () {
-    beforeEach(inject(function ($controller) {
-      recipesController = $controller('RecipeDetailController');
-    }));
+
 
     it('should splice out the passed in ingredient parameter', function () {
       var ingredients = ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'];
@@ -278,10 +253,6 @@ describe('recipeDetailController', function () {
   });
 
   describe('deleteStep function ', function () {
-    beforeEach(inject(function ($controller) {
-      recipesController = $controller('RecipeDetailController');
-    }));
-
     it('should splice out the passed in step parameter', function () {
       var steps = ['Step 1', 'Step 2', 'Step 3'];
       recipesController.steps = steps;
@@ -295,10 +266,6 @@ describe('recipeDetailController', function () {
   });
 
   describe('toggleModal function', function () {
-    beforeEach(inject(function ($controller) {
-      recipesController = $controller('RecipeDetailController');
-    }));
-
     it('should toggle the modalShown variable', function () {
       var item = 'Here is the item';
       expect(recipesController.modalShown).toBe(false);
@@ -313,10 +280,6 @@ describe('recipeDetailController', function () {
   });
 
   describe('checkItem function', function () {
-    beforeEach(inject(function ($controller) {
-      recipesController = $controller('RecipeDetailController');
-    }));
-
     it('should return true if item.foodItem does NOT equal undefined', function () {
       var item = {
         foodItem: 'Carrot'
