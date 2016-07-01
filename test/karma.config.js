@@ -11,7 +11,6 @@ module.exports = function (config) {
       'node_modules/angular-animate/angular-animate.js',
       'node_modules/angular-mocks/angular-mocks.js',
       // Source
-      'public/scripts/route-config.js',
       'public/scripts/**/*.js',
       // Tests
       'test/**/*.js'

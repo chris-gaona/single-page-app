@@ -1,4 +1,14 @@
+// RUN npm test IN THE CONSOLE TO RUN ALL THE TESTS
+// RUN npm run createDocs IN THE CONSOLE TO CREATE JSDOC FILES
 
+/**
+* @module app
+* @requires ngRoute module
+* @requires ngAnimate module
+* @requires exceptionOverride module
+*/
+
+// immediately invoked function
 (function() {
   'use strict';
 
@@ -10,8 +20,6 @@
   // 1) The root of the application "/" which serves up the "Recipes" view.
   // 2) The recipe edit route "/edit/:id" which serves up the "Recipe Detail" view.
   // 3) The recipe add route "/add" which also serves up the "Recipe Detail" view.
-
-  // TODO Uncomment this code after you've configured the `app` module.
 
   angular
     .module('app')
