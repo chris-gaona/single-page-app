@@ -5,7 +5,6 @@
     return function(exception, cause) {
         exception.message;
         alert(exception.message);
-        // throw exception;
     };
   }
 
