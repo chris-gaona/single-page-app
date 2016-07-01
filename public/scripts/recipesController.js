@@ -4,6 +4,9 @@
   function recipesController (DataService, $location) {
     var vm = this;
 
+    // used for testing $exceptionHandler
+    // var x = n + 1;
+
     // As a user, I should be able to select a category on the "Recipes" list screen to filter the list of recipes by that selected category.
     vm.categories = DataService.categories.data;
 
