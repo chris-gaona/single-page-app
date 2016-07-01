@@ -2,7 +2,7 @@
 (function() {
   'use strict';
 
-  angular.module('app', ['ngRoute', 'ngAnimate']);
+  angular.module('app', ['ngRoute', 'ngAnimate', 'exceptionOverride']);
 
   // The Angular $routeProvider is used to configure routes for your application.
 
