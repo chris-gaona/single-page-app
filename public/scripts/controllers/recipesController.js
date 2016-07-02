@@ -17,7 +17,7 @@
   * the browser address bar & makes the URL available to your
   * application
   */
-  function recipesController (DataService, $location, $log) {
+  function recipesController ($location, $log, DataService) {
     // adds this to the value of vm
     var vm = this;
 
@@ -93,5 +93,5 @@
   }
 
   angular.module('app')
-  .controller('RecipesController', ['DataService', '$location', '$log', recipesController]);
+  .controller('RecipesController', ['$location', '$log', 'DataService', recipesController]);
 })();
