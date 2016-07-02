@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: services/dataService.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: services/dataService.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+* @module DataService
+* @memberof angular_module.app.DataService
+*/
+
+// immediately invoked function
+(function () {
+  'use strict';
+
+  /**
+  * @function apiRoutes
+  * @description The container function for all the
+  * DataService functions
+  * @param $http - The $http service is a core Angular
+  * service that facilitates communication with the remote
+  * HTTP servers via the browser's XMLHttpRequest object or
+  * via JSONP.
+  */
+  function apiRoutes ($http, $log) {
+    // creates apiRoutes object &amp; adds recipes, categories, &amp;
+    // foodItems empty arrays
+    var apiRoutes = {
+      recipes: [],
+      categories: [],
+      foodItems: []
+    };
+
+    /**
+    * @function getAll
+    * @description /api/recipes - GET - Gets all of the
+    * recipes.
+    * @return Returns response from server request to
+    * /api/recipes
+    */
+    apiRoutes.getAll = function () {
+      return $http.get('/api/recipes').then(function successCallback (response) {
+        angular.copy(response, apiRoutes.recipes);
+      }, function errorCallback (response, status) {
+        $log.error('Error ' + response + status);
+      });
+    };
+
+    /**
+    * @function oneCategory
+    * @description /api/recipes?category={category} - GET -
+    * Gets all of the recipes for the specified category.
+    * @return Returns response from server request to
+    * /api/recipes?category={category}
+    */
+    apiRoutes.oneCategory = function () {
+      return $http.get('/api/recipes?category={category}').then(function successCallback (response) {
+        $log.log(response);
+      }, function errorCallback (response, status) {
+        $log.error('Error ' + response + status);
+      });
+    };
+
+    /**
+    * @function getOne
+    * @description /api/recipes/{id} - GET - Gets the recipe
+    * for the specified ID.
+    * @return Returns response from server request to
+    * /api/recipes/{id}
+    */
+    apiRoutes.getOne = function (id) {
+      return $http.get('/api/recipes/' + id);
+    };
+
+    /**
+    * @function update
+    * @description /api/recipes/{id} - PUT - Updates the recipe for the specified ID.
+    * @return Returns response from server request to
+    * /api/recipes/{id}
+    */
+    apiRoutes.update = function (id, recipe) {
+      return $http.put('/api/recipes/' + id, recipe);
+    };
+
+    /**
+    * @function add
+    * @description /api/recipes - POST - Adds a recipe.
+    * @return Returns response from server request to
+    * /api/recipes
+    */
+    apiRoutes.add = function (recipe) {
+      return $http.post('/api/recipes', recipe);
+    };
+
+    /**
+    * @function remove
+    * @description /api/recipes/{id} - DELETE - Deletes the
+    * recipe for the specified ID.
+    * @return Returns response from server request to
+    * /api/recipes/{id}
+    */
+    apiRoutes.remove = function (id) {
+      return $http.delete('/api/recipes/' + id);
+    };
+
+    /**
+    * @function allCategories
+    * @description /api/categories - GET - Gets all of the
+    * categories.
+    * @return Returns response from server request to
+    * /api/categories
+    */
+    apiRoutes.allCategories = function () {
+      return $http.get('/api/categories').then(function successCallback (response) {
+        angular.copy(response, apiRoutes.categories);
+      }, function errorCallback (response, status) {
+        $log.error('Error ' + response + status);
+      });
+    };
+
+    /**
+    * @function foodItems
+    * @description /api/fooditems - GET - Gets all of the
+    * food items.
+    * @return Returns response from server request to
+    * /api/fooditems
+    */
+    apiRoutes.foodItems = function () {
+      return $http.get('/api/fooditems').then(function successCallback (response) {
+        angular.copy(response, apiRoutes.foodItems);
+      }, function errorCallback (response, status) {
+        $log.error('Error ' + response + status);
+      });
+    };
+
+    // return apiRoutes functions
+    return apiRoutes;
+  }
+
+  // --------------------------------------
+  // ANGULAR
+  // --------------------------------------
+  angular.module('app')
+  .factory('DataService', ['$http', '$log', apiRoutes]);
+})();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="angular_module.app.DataService.module_DataService.html">DataService</a></li><li><a href="angular_module.app.RecipeDetailController.module_RecipeDetailController.html">RecipeDetailController</a></li><li><a href="angular_module.app.RecipesController.module_RecipesController.html">RecipesController</a></li><li><a href="module-app.html">app</a></li><li><a href="module-modalDialog.html">modalDialog</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat Jul 02 2016 08:29:57 GMT-0700 (PDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
