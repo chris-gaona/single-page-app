@@ -3,33 +3,31 @@
 describe('recipeDetailController', function () {
   // variables
   var recipesController,
-      DataService,
-      timeout,
-      q,
-      scope,
-      $location,
-      routeParams,
-      recipe;
+    DataService,
+    q,
+    scope,
+    $location,
+    routeParams,
+    recipe;
 
   beforeEach(module('app'));
 
   describe('$routeParams.id is defined', function () {
-    beforeEach(inject(function ($rootScope, $controller, $timeout, $q, _DataService_, $routeParams) {
+    beforeEach(inject(function ($rootScope, $controller, $q, _DataService_, $routeParams) {
       DataService = _DataService_;
-      timeout = $timeout;
       q = $q;
       routeParams = {};
       routeParams.id = 123456789;
 
       recipe = {
         data: {
-          name: "Cabbage Salad Goodness",
-          description: "Simple, light and tasty cabbage salad.",
-          category: "Salad",
+          name: 'Cabbage Salad Goodness',
+          description: 'Simple, light and tasty cabbage salad.',
+          category: 'Salad',
           prepTime: 10,
           cookTime: 60,
           ingredients: [],
-          _id: "dBHEBmK8abxVorHi",
+          _id: 'dBHEBmK8abxVorHi',
           steps: []
         }
       };
@@ -75,9 +73,8 @@ describe('recipeDetailController', function () {
   });
 
   describe('$routeParams.id is undefined', function () {
-    beforeEach(inject(function ($rootScope, $controller, $timeout, $q, _DataService_, $routeParams) {
+    beforeEach(inject(function ($rootScope, $controller, $q, _DataService_, $routeParams) {
       DataService = _DataService_;
-      timeout = $timeout;
       q = $q;
       routeParams = {};
 
@@ -112,7 +109,7 @@ describe('recipeDetailController', function () {
     });
   });
 
-  beforeEach(inject(function ($controller, _$location_,  _DataService_) {
+  beforeEach(inject(function ($controller, _$location_, _DataService_) {
     DataService = _DataService_;
     $location = _$location_;
     recipesController = $controller('RecipeDetailController');
@@ -135,8 +132,7 @@ describe('recipeDetailController', function () {
   });
 
   describe('saveRecipe function', function () {
-    beforeEach(inject(function ($rootScope, $controller, $timeout, $q) {
-      timeout = $timeout;
+    beforeEach(inject(function ($rootScope, $controller, $q) {
       q = $q;
 
       recipe = undefined;
@@ -161,19 +157,18 @@ describe('recipeDetailController', function () {
   });
 
   describe('saveRecipe function', function () {
-    beforeEach(inject(function ($rootScope, $controller, $timeout, $q) {
-      timeout = $timeout;
+    beforeEach(inject(function ($rootScope, $controller, $q) {
       q = $q;
 
       recipe = {
         data: {
-          name: "Cabbage Salad Goodness",
-          description: "Simple, light and tasty cabbage salad.",
-          category: "Salad",
+          name: 'Cabbage Salad Goodness',
+          description: 'Simple, light and tasty cabbage salad.',
+          category: 'Salad',
           prepTime: 10,
           cookTime: 60,
           ingredients: [],
-          _id: "dBHEBmK8abxVorHi",
+          _id: 'dBHEBmK8abxVorHi',
           steps: []
         }
       };
@@ -238,8 +233,6 @@ describe('recipeDetailController', function () {
   });
 
   describe('deleteIngr function ', function () {
-
-
     it('should splice out the passed in ingredient parameter', function () {
       var ingredients = ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'];
       recipesController.ingredients = ingredients;
@@ -283,13 +276,13 @@ describe('recipeDetailController', function () {
     it('should return true if item.foodItem does NOT equal undefined', function () {
       var item = {
         foodItem: 'Carrot'
-      }
+      };
 
       expect(recipesController.checkItem(item)).toBe(false);
     });
 
     it('should return false if item.foodItem equals undefined', function () {
-      var item = {}
+      var item = {};
 
       expect(recipesController.checkItem(item)).toBe(true);
     });

@@ -17,7 +17,7 @@
   * the browser address bar & makes the URL available to your
   * application
   */
-  function recipesController (DataService, $location) {
+  function recipesController (DataService, $location, $log) {
     // adds this to the value of vm
     var vm = this;
 
@@ -46,7 +46,7 @@
       // recipe id & then deals with the response
       DataService.remove(recipe._id).then(function (response) {
         // log a useful string to the console
-        console.log('Recipe Successfully Deleted!');
+        $log.info('Recipe Successfully Deleted!');
         // change modalShown variable to false
         vm.modalShown = false;
         // put response from server in response variable
@@ -54,7 +54,7 @@
       // if there is an error
       }, function (error) {
         // log the error to the console
-        console.log('Error ' + error);
+        $log.error('Error ' + error);
       });
 
       // remove the recipe passed in from the recipes array
@@ -83,7 +83,7 @@
     * passed into deleteRecipe as a paremeter to pass to the
     * server
     */
-    vm.toggleModal = function(recipe) {
+    vm.toggleModal = function (recipe) {
       // chosenRecipe variable is set to equal the recipe
       // passed into the function as a parameter
       vm.chosenRecipe = recipe;
@@ -93,6 +93,5 @@
   }
 
   angular.module('app')
-  .controller('RecipesController', ['DataService', '$location', recipesController]);
-
+  .controller('RecipesController', ['DataService', '$location', '$log', recipesController]);
 })();

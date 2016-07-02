@@ -16,7 +16,7 @@
   * HTTP servers via the browser's XMLHttpRequest object or
   * via JSONP.
   */
-  function apiRoutes ($http) {
+  function apiRoutes ($http, $log) {
     // creates apiRoutes object & adds recipes, categories, &
     // foodItems empty arrays
     var apiRoutes = {
@@ -36,7 +36,7 @@
       return $http.get('/api/recipes').then(function successCallback (response) {
         angular.copy(response, apiRoutes.recipes);
       }, function errorCallback (response, status) {
-        console.log('Error ' + response + status);
+        $log.error('Error ' + response + status);
       });
     };
 
@@ -49,9 +49,9 @@
     */
     apiRoutes.oneCategory = function () {
       return $http.get('/api/recipes?category={category}').then(function successCallback (response) {
-        console.log(response);
+        $log.log(response);
       }, function errorCallback (response, status) {
-        console.log('Error ' + response + status);
+        $log.error('Error ' + response + status);
       });
     };
 
@@ -108,7 +108,7 @@
       return $http.get('/api/categories').then(function successCallback (response) {
         angular.copy(response, apiRoutes.categories);
       }, function errorCallback (response, status) {
-        console.log('Error ' + response + status);
+        $log.error('Error ' + response + status);
       });
     };
 
@@ -123,7 +123,7 @@
       return $http.get('/api/fooditems').then(function successCallback (response) {
         angular.copy(response, apiRoutes.foodItems);
       }, function errorCallback (response, status) {
-        console.log('Error ' + response + status);
+        $log.error('Error ' + response + status);
       });
     };
 
@@ -131,10 +131,9 @@
     return apiRoutes;
   }
 
-  //--------------------------------------
-  //ANGULAR
-  //--------------------------------------
+  // --------------------------------------
+  // ANGULAR
+  // --------------------------------------
   angular.module('app')
-  .service('DataService', ['$http', apiRoutes]);
-
+  .factory('DataService', ['$http', '$log', apiRoutes]);
 })();

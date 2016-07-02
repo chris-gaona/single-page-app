@@ -2,9 +2,9 @@
   'use strict';
 
   function exceptionHandler () {
-    return function(exception, cause) {
-        exception.message;
-        alert(exception.message);
+    return function (exception, cause) {
+      exception.message;
+      alert(exception.message);
     };
   }
 

@@ -3,25 +3,23 @@
 describe('recipesController', function () {
   // variables
   var recipesController,
-      DataService,
-      timeout,
-      q,
-      scope,
-      $location,
-      recipe;
+    DataService,
+    q,
+    scope,
+    $location,
+    recipe;
 
   beforeEach(module('app'));
 
   describe('deleteRecipe function', function () {
-    beforeEach(inject(function ($rootScope, $controller, $timeout, $q, _DataService_) {
+    beforeEach(inject(function ($rootScope, $controller, $q, _DataService_) {
       recipe = {
-        _id:'dBHEBmK8abxVorHi',
-        name:'Cabbage Salad Goodness',
-        category:'Salad'
+        _id: 'dBHEBmK8abxVorHi',
+        name: 'Cabbage Salad Goodness',
+        category: 'Salad'
       };
 
       DataService = _DataService_;
-      timeout = $timeout;
       q = $q;
 
       scope = $rootScope.$new();
@@ -31,31 +29,31 @@ describe('recipesController', function () {
       });
 
       recipesController.recipes = [
-          {
-            "name": "Cabbage Salad Goodness",
-            "description": "Simple, light and tasty cabbage salad.",
-            "category": "Salad",
-            "prepTime": 10,
-            "cookTime": 60,
-            "_id": "dBHEBmK8abxVorHi"
-          },
-          {
-            "name": "Grilled Cheese Sandwich",
-            "description": "Quick to prepare and delicious chees sandwiches.",
-            "category": "Appetizer/Snack",
-            "prepTime": 10,
-            "cookTime": 7,
-            "_id": "8kutKKiHSYpGd4sW"
-          },
-          {
-            "name": "Grilled Steak",
-            "description": "Simple and tasty meat dish.",
-            "category": "Entree",
-            "prepTime": 65,
-            "cookTime": 10,
-            "_id": "284yV1AUCCA0w8Gw"
-          }
-        ];
+        {
+          name: 'Cabbage Salad Goodness',
+          description: 'Simple, light and tasty cabbage salad.',
+          category: 'Salad',
+          prepTime: 10,
+          cookTime: 60,
+          _id: 'dBHEBmK8abxVorHi'
+        },
+        {
+          name: 'Grilled Cheese Sandwich',
+          description: 'Quick to prepare and delicious chees sandwiches.',
+          category: 'Appetizer/Snack',
+          prepTime: 10,
+          cookTime: 7,
+          _id: '8kutKKiHSYpGd4sW'
+        },
+        {
+          name: 'Grilled Steak',
+          description: 'Simple and tasty meat dish.',
+          category: 'Entree',
+          prepTime: 65,
+          cookTime: 10,
+          _id: '284yV1AUCCA0w8Gw'
+        }
+      ];
     }));
 
     it('should call DataService.remove function', function () {
@@ -117,15 +115,15 @@ describe('recipesController', function () {
 
     it('should pass in the current recipe to store in chosenRecipe variable', function () {
       var recipe = {
-        "name": "Cabbage Salad Goodness",
-        "description": "Simple, light and tasty cabbage salad.",
-        "category": "Salad",
-        "prepTime": 10
+        name: 'Cabbage Salad Goodness',
+        description: 'Simple, light and tasty cabbage salad.',
+        category: 'Salad',
+        prepTime: 10
       };
 
       recipesController.toggleModal(recipe);
       expect(recipesController.chosenRecipe.name).toBeDefined();
-      expect(recipesController.chosenRecipe.name).toContain("Cabbage Salad Goodness");
+      expect(recipesController.chosenRecipe.name).toContain('Cabbage Salad Goodness');
       expect(recipesController.chosenRecipe.description).toBeDefined();
     });
   });
