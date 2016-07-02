@@ -25,6 +25,11 @@
     .module('app')
     .config(config);
 
+  /**
+  * @function config
+  * @description Configuring the routes for the application
+  * @param $routeProvider - Used for configuring routes
+  */
   function config ($routeProvider) {
     $routeProvider
       .when('/', {
