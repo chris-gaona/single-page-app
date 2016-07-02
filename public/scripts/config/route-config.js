@@ -9,7 +9,7 @@
 */
 
 // immediately invoked function
-(function() {
+(function () {
   'use strict';
 
   angular.module('app', ['ngRoute', 'ngAnimate', 'exceptionOverride']);
@@ -25,17 +25,17 @@
     .module('app')
     .config(config);
 
-  function config($routeProvider) {
+  function config ($routeProvider) {
     $routeProvider
       .when('/', {
         controller: 'RecipesController',
         controllerAs: 'vm',
         templateUrl: 'templates/recipes.html',
         resolve: {
-          recipes: ['DataService', function(DataService){
+          recipes: ['DataService', function (DataService) {
             return DataService.getAll();
           }],
-          categories: ['DataService', function(DataService){
+          categories: ['DataService', function (DataService) {
             return DataService.allCategories();
           }]
         }
@@ -45,10 +45,10 @@
         controllerAs: 'vm',
         templateUrl: 'templates/recipe-detail.html',
         resolve: {
-          categories: ['DataService', function(DataService){
+          categories: ['DataService', function (DataService) {
             return DataService.allCategories();
           }],
-          foodItems: ['DataService', function(DataService){
+          foodItems: ['DataService', function (DataService) {
             return DataService.foodItems();
           }]
         }
@@ -58,10 +58,10 @@
         controllerAs: 'vm',
         templateUrl: 'templates/recipe-detail.html',
         resolve: {
-          categories: ['DataService', function(DataService){
+          categories: ['DataService', function (DataService) {
             return DataService.allCategories();
           }],
-          foodItems: ['DataService', function(DataService){
+          foodItems: ['DataService', function (DataService) {
             return DataService.foodItems();
           }]
         }

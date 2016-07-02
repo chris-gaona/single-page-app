@@ -19,7 +19,7 @@
   * the browser address bar & makes the URL available to
   * your application
   */
-  function recipesController (DataService, $routeParams, $location) {
+  function recipesController (DataService, $routeParams, $location, $log) {
     // adds this to the value of vm
     var vm = this;
 
@@ -51,7 +51,7 @@
     */
     vm.getOneRecipe = function () {
       // if id is not undefined
-      if (vm.id !== undefined) {
+      if (angular.isDefined(vm.id)) {
         // call DataService.getOne function & pass in the
         // id parameter & deal with the response
         DataService.getOne(vm.id).then(function (response) {
@@ -76,16 +76,16 @@
           // assign steps array to steps variable
           vm.steps = vm.recipe.steps;
         // if error with response
-      }, function (error) {
-          console.log('Error ' + error);
+        }, function (error) {
+          $log.error('Error ' + error);
         });
         // editing is set to true
         vm.editing = true;
-        console.log('EDITING!');
+        $log.info('EDITING!');
       } else {
         // else editing is set to false
         vm.editing = false;
-        console.log('NOT EDITING!');
+        $log.info('NOT EDITING!');
 
         // creates empty ingredient input
         vm.ingredients = [{
@@ -152,20 +152,20 @@
 
       // if recipe is not undefined, which means that the
       // user is editing an existing recipe
-      if (recipe !== undefined) {
+      if (angular.isDefined(recipe)) {
         // call DataService.update & pass in the recipe id
         // as a parameter & deal with the response
         DataService.update(recipe._id, newRecipe).then(function (response) {
           if (response) {
             // log the response.data to the console
-            console.log(response.data);
+            $log.log(response.data);
             // send the user back to the home page
             $location.path('/');
           }
         // if there was an error
         }, function (error) {
           // log the error to the console
-          console.log(error.data.errors);
+          $log.error(error.data.errors);
           // assigns the various possible errors from the
           // server to the variables below
           vm.catErrors = error.data.errors.category;
@@ -181,16 +181,16 @@
           // if there was a response
           if (response) {
             // log the response.data to the console
-            console.log(response.data);
+            $log.log(response.data);
             // send the user to the home page
             $location.path('/');
           } else {
-            console.log('There was an error!');
+            $log.warn('There was an error!');
           }
         // if there was an error
         }, function (error) {
           // log the error to the console
-          console.log(error.data.errors);
+          $log.error(error.data.errors);
           // assigns the various possible errors from the
           // server to the variables below
           vm.catErrors = error.data.errors.category;
@@ -267,7 +267,7 @@
     * @param {object} item - this is the item object
     * passed into toggleModal as a paremeter
     */
-    vm.toggleModal = function(item) {
+    vm.toggleModal = function (item) {
       // chosenRecipe variable is set to equal the item
       // passed into the function as a parameter
       vm.chosenItem = item;
@@ -287,7 +287,7 @@
     vm.checkItem = function (item) {
       // if item contains the key --> foodItem return true
       // else return false
-      if (item.foodItem === undefined) {
+      if (angular.isUndefined(item.foodItem)) {
         return true;
       } else {
         return false;
@@ -296,5 +296,5 @@
   }
 
   angular.module('app')
-  .controller('RecipeDetailController', ['DataService', '$routeParams', '$location', recipesController]);
+  .controller('RecipeDetailController', ['DataService', '$routeParams', '$location', '$log', recipesController]);
 })();

@@ -1,0 +1,12 @@
+{
+    "extends": "angular",
+    "plugins": [
+        "standard"
+    ],
+    "rules": {
+        "semi": ["error", "always"]
+    },
+    "globals": {
+      "alert": true
+    }
+}
