@@ -209,3 +209,7 @@ background-color: #F0A49B;
 .fade.ng-enter.ng-enter-active {
   opacity:1;
 }
+
+.validation-errors li {
+  color: red;
+}

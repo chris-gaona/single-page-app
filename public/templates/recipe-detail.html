@@ -183,7 +183,7 @@
       <p>
         <!-- TODO Add a directive to this input element to bind its value
           to the recipe ingredient model's `amount` property. -->
-        <input type="text" ng-model="ingredient.amount">
+        <input type="text" ng-model="ingredient.amount" ng-class="{error: vm.ingErrors}">
       </p>
     </div>
     <div class="grid-5 pad-top">
