@@ -22,6 +22,8 @@ module.exports = function (config) {
 
     browsers: ['PhantomJS'],
 
+    reporters: ['progress', 'junit'],
+
     plugin: [
       'karma-jasmine',
       'jasmine-core',
