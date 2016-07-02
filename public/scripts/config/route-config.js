@@ -9,7 +9,7 @@
 */
 
 // immediately invoked function
-(function () {
+(function (angular) {
   'use strict';
 
   angular.module('app', ['ngRoute', 'ngAnimate', 'exceptionOverride']);
@@ -75,4 +75,4 @@
         redirectTo: '/'
       });
   }
-})();
+})(angular);

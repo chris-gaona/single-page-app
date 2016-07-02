@@ -1,4 +1,4 @@
-(function () {
+(function (angular) {
   'use strict';
 
   /**
@@ -15,4 +15,4 @@
   }
 
   angular.module('exceptionOverride', []).factory('$exceptionHandler', exceptionHandler);
-})();
+})(angular);

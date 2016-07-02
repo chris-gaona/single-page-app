@@ -4,7 +4,7 @@
 */
 
 // immediately invoked function
-(function () {
+(function (angular) {
   'use strict';
 
   /**
@@ -297,4 +297,4 @@
 
   angular.module('app')
   .controller('RecipeDetailController', ['$routeParams', '$location', '$log', 'DataService', recipesController]);
-})();
+})(angular);
