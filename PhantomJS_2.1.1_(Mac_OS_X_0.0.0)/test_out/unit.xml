@@ -1,32 +1,32 @@
 <?xml version="1.0"?>
-<testsuite name="PhantomJS 2.1.1 (Mac OS X 0.0.0)" package="unit" timestamp="2016-07-02T20:32:41" id="0" hostname="Chriss-MBP" tests="24" errors="0" failures="0" time="0.071">
+<testsuite name="PhantomJS 2.1.1 (Mac OS X 0.0.0)" package="unit" timestamp="2016-07-25T13:44:03" id="0" hostname="Chriss-MBP" tests="24" errors="0" failures="0" time="0.093">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1"/>
   </properties>
-  <testcase name="recipeDetailController $routeParams.id is defined should have a $routeParams.id value" time="0.008" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
-  <testcase name="recipeDetailController $routeParams.id is defined should be in editing mode" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
-  <testcase name="recipeDetailController $routeParams.id is defined should have called DataService.getOne()" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
-  <testcase name="recipeDetailController $routeParams.id is undefined should have a $routeParams.id value" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
-  <testcase name="recipeDetailController $routeParams.id is undefined should not have called DataService.getOne()" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
-  <testcase name="recipeDetailController addNewRec function should create a new empty ingredient item" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
-  <testcase name="recipeDetailController addNewStep function should create a new empty step item" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
-  <testcase name="recipeDetailController saveRecipe function should call DataService.add()" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
-  <testcase name="recipeDetailController saveRecipe function should call DataService.update()" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
-  <testcase name="recipeDetailController checkError function should initially have undefined error variables" time="0.001" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
-  <testcase name="recipeDetailController checkError function should return true if error variables are defined" time="0.015" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
+  <testcase name="recipeDetailController $routeParams.id is defined should have a $routeParams.id value" time="0.023" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
+  <testcase name="recipeDetailController $routeParams.id is defined should be in editing mode" time="0.004" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
+  <testcase name="recipeDetailController $routeParams.id is defined should have called DataService.getOne()" time="0.005" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
+  <testcase name="recipeDetailController $routeParams.id is undefined should have a $routeParams.id value" time="0.004" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
+  <testcase name="recipeDetailController $routeParams.id is undefined should not have called DataService.getOne()" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
+  <testcase name="recipeDetailController addNewRec function should create a new empty ingredient item" time="0.004" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
+  <testcase name="recipeDetailController addNewStep function should create a new empty step item" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
+  <testcase name="recipeDetailController saveRecipe function should call DataService.add()" time="0.004" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
+  <testcase name="recipeDetailController saveRecipe function should call DataService.update()" time="0.004" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
+  <testcase name="recipeDetailController checkError function should initially have undefined error variables" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
+  <testcase name="recipeDetailController checkError function should return true if error variables are defined" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
   <testcase name="recipeDetailController checkError function should return true if only one error variables is defined" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
-  <testcase name="recipeDetailController cancel function should change the location path to /" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
-  <testcase name="recipeDetailController deleteIngr function  should splice out the passed in ingredient parameter" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
-  <testcase name="recipeDetailController deleteStep function  should splice out the passed in step parameter" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
+  <testcase name="recipeDetailController cancel function should change the location path to /" time="0.004" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
+  <testcase name="recipeDetailController deleteIngr function  should splice out the passed in ingredient parameter" time="0.004" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
+  <testcase name="recipeDetailController deleteStep function  should splice out the passed in step parameter" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
   <testcase name="recipeDetailController toggleModal function should toggle the modalShown variable" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
   <testcase name="recipeDetailController checkItem function should return true if item.foodItem does NOT equal undefined" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
   <testcase name="recipeDetailController checkItem function should return false if item.foodItem equals undefined" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipeDetailController"/>
-  <testcase name="recipesController deleteRecipe function should call DataService.remove function" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipesController"/>
-  <testcase name="recipesController deleteRecipe function should remove the recipe deleted from the array" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipesController"/>
-  <testcase name="recipesController addNew function should direct the user to the recipe detail page" time="0.001" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipesController"/>
+  <testcase name="recipesController deleteRecipe function should call DataService.remove function" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipesController"/>
+  <testcase name="recipesController deleteRecipe function should remove the recipe deleted from the array" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipesController"/>
+  <testcase name="recipesController addNew function should direct the user to the recipe detail page" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipesController"/>
   <testcase name="recipesController toggleModal function should be false" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipesController"/>
-  <testcase name="recipesController toggleModal function should toggle modalShown variable" time="0.001" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipesController"/>
-  <testcase name="recipesController toggleModal function should pass in the current recipe to store in chosenRecipe variable" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipesController"/>
+  <testcase name="recipesController toggleModal function should toggle modalShown variable" time="0.002" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipesController"/>
+  <testcase name="recipesController toggleModal function should pass in the current recipe to store in chosenRecipe variable" time="0.003" classname="PhantomJS_2_1_1_(Mac_OS_X_0_0_0).unit.recipesController"/>
   <system-out>
     <![CDATA[
 ]]>
