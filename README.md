@@ -6,6 +6,8 @@ Run `git clone https://github.com/chris-gaona/single-page-app.git` command to cl
 
 Run `npm install` command to install all the necessary dependencies.
 
+Run `npm start` command to start the project with the node server.
+
 Run `npm test` command to run all the Karma / Jasmine tests.
 
 Run `npm lint` command to lint all the JavaScript files.
