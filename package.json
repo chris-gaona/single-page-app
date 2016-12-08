@@ -9,7 +9,8 @@
     "db": "node ./src/api/data/seed.js",
     "test": "karma start test/karma.config.js",
     "jsDocs": "jsdoc --readme README.md public/scripts/**/*.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "postinstall": "npm run db"
   },
   "author": "Treehouse Island, Inc.",
   "license": "ISC",
