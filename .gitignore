@@ -3,3 +3,6 @@ categories.db
 foodItems.db
 recipes.db
 PhantomJS_2.1.1_(Mac_OS_X_0.0.0)
+.DS_Store
+.idea/
+
